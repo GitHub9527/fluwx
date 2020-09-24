@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fluwx/fluwx.dart';
+import 'package:fluwx/src/response/wechat_response.dart';
+import 'package:fluwx/src/share/share_models.dart';
+import 'package:fluwx/src/wechat_enums.dart';
+import 'package:fluwx/src/wechat_file.dart' hide FileSchema;
 
 class ShareVideoPage extends StatefulWidget {
   @override
@@ -13,7 +17,7 @@ class _ShareMusicPageState extends State<ShareVideoPage> {
   String _description = "A Popular Rock Band From China";
   String _thumnail = "images/logo.png";
   WeChatScene scene = WeChatScene.SESSION;
-
+Fluwx fluwx = Fluwx();
   @override
   void initState() {
     super.initState();
@@ -122,7 +126,7 @@ class _ShareMusicPageState extends State<ShareVideoPage> {
         description: _description,
         scene: this.scene,
         title: _title);
-    shareToWeChat(model);
+    fluwx.shareToWeChat(model);
   }
 
   void handleRadioValueChanged(WeChatScene scene) {

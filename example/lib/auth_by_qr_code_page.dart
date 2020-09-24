@@ -1,7 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
-import 'package:fluwx/fluwx.dart' as fluwx;
+import 'package:fluwx/fluwx.dart' ;
 
 class AuthByQRCodePage extends StatefulWidget {
   @override
@@ -11,7 +11,7 @@ class AuthByQRCodePage extends StatefulWidget {
 class _AuthByQRCodePageState extends State<AuthByQRCodePage> {
   String _status = "status";
   Uint8List _image;
-
+  Fluwx fluwx = Fluwx();
   @override
   void initState() {
     super.initState();

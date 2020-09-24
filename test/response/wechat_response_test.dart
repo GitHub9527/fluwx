@@ -19,7 +19,10 @@
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fluwx/fluwx.dart';
-
+import 'package:fluwx/src/response/wechat_response.dart';
+import 'package:fluwx/src/share/share_models.dart';
+import 'package:fluwx/src/wechat_enums.dart';
+import 'package:fluwx/src/wechat_file.dart' hide FileSchema;
 void main() {
   group("create response", () {
     test("WeChatShareResponse", () {

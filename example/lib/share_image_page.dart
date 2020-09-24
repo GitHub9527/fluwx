@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fluwx/fluwx.dart';
+import 'package:fluwx/src/response/wechat_response.dart';
+import 'package:fluwx/src/share/share_models.dart';
+import 'package:fluwx/src/wechat_enums.dart';
+import 'package:fluwx/src/wechat_file.dart' hide FileSchema;
 
 class ShareImagePage extends StatefulWidget {
   @override
@@ -16,11 +20,11 @@ class _ShareImagePageState extends State<ShareImagePage> {
 
   WeChatImage source;
   WeChatImage thumbnail;
-
+  Fluwx fluwx = Fluwx();
   @override
   void initState() {
     super.initState();
-    weChatResponseEventHandler.listen((res) {
+    fluwx.weChatResponseEventHandler.listen((res) {
       if (res is WeChatShareResponse) {
         setState(() {
           _response = "state :${res.isSuccessful}";
@@ -104,7 +108,7 @@ class _ShareImagePageState extends State<ShareImagePage> {
   }
 
   void _shareImage() {
-    shareToWeChat(WeChatShareImageModel(source, thumbnail: thumbnail));
+    fluwx.shareToWeChat(WeChatShareImageModel(source, thumbnail: thumbnail));
   }
 
   void handleRadioValueChanged(WeChatScene scene) {

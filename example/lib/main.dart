@@ -24,6 +24,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  Fluwx fluwx = Fluwx();
   @override
   void initState() {
     super.initState();
@@ -31,12 +32,12 @@ class _MyAppState extends State<MyApp> {
   }
 
   _initFluwx() async {
-    await registerWxApi(
+    await fluwx.registerWxApi(
         appId: "wxd930ea5d5a258f4f",
         doOnAndroid: true,
         doOnIOS: true,
         universalLink: "https://your.univerallink.com/link/");
-    var result = await isWeChatInstalled;
+    var result = await fluwx.isWeChatInstalled;
     print("is installed $result");
   }
 
@@ -70,6 +71,7 @@ class _MyAppState extends State<MyApp> {
 }
 
 class ShareSelectorPage extends StatelessWidget {
+  Fluwx fluwx = Fluwx();
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -175,7 +177,7 @@ class ShareSelectorPage extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: new OutlineButton(
                 onPressed: () {
-                  openWeChatApp();
+                  fluwx.openWeChatApp();
                 },
                 child: const Text("Open WeChat App")),
           ),

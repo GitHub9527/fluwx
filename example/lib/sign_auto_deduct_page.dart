@@ -22,11 +22,11 @@ class _SignAutoDeductPageState extends State<SignAutoDeductPage> {
   TextEditingController sign = TextEditingController(text: "");
   TextEditingController timestamp = TextEditingController(text: "");
   TextEditingController returnApp = TextEditingController(text: "3");
-
+Fluwx fluwx = Fluwx();
   @override
   void initState() {
     super.initState();
-    weChatResponseEventHandler.listen((resp) {
+    fluwx.weChatResponseEventHandler.listen((resp) {
       print("resp = ${resp.isSuccessful}");
     });
   }
@@ -95,7 +95,7 @@ class _SignAutoDeductPageState extends State<SignAutoDeductPage> {
   }
 
   void _signAutoDeduct() {
-    autoDeDuctWeChat(
+    fluwx.autoDeDuctWeChat(
         appId: appId.text ?? "",
         mchId: mchId.text ?? "",
         planId: planId.text ?? "",

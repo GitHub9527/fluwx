@@ -14,11 +14,11 @@ class _SubscribeMessagePageState extends State<SubscribeMessagePage> {
   TextEditingController templateId = TextEditingController(
       text: "cm_vM2k3IjHcYbkGUeAfL6Fja_7Pgv4Hx_q4tA253Ss");
   TextEditingController reserved = TextEditingController(text: "123");
-
+  Fluwx fluwx = Fluwx();
   @override
   void initState() {
     super.initState();
-    weChatResponseEventHandler.listen((resp) {
+    fluwx.weChatResponseEventHandler.listen((resp) {
       print("resp = $resp");
     });
   }
@@ -69,7 +69,7 @@ class _SubscribeMessagePageState extends State<SubscribeMessagePage> {
   }
 
   void _requestSubMsg() {
-    subscribeWeChatMsg(
+    fluwx.subscribeWeChatMsg(
       appId: appId.text,
       scene: int.tryParse(scene.text) ?? 1,
       templateId: templateId.text,

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fluwx/fluwx.dart';
-
+import 'package:fluwx/src/response/wechat_response.dart';
+import 'package:fluwx/src/share/share_models.dart';
+import 'package:fluwx/src/wechat_enums.dart';
+import 'package:fluwx/src/wechat_file.dart' hide FileSchema;
 class LaunchMiniProgramPage extends StatefulWidget {
   @override
   _LaunchMiniProgramPageState createState() => _LaunchMiniProgramPageState();
@@ -8,11 +11,11 @@ class LaunchMiniProgramPage extends StatefulWidget {
 
 class _LaunchMiniProgramPageState extends State<LaunchMiniProgramPage> {
   String _result = "无";
-
+  Fluwx fluwx = Fluwx();
   @override
   void initState() {
     super.initState();
-    weChatResponseEventHandler.listen((res) {
+    fluwx.weChatResponseEventHandler.listen((res) {
       if (res is WeChatLaunchMiniProgramResponse) {
         if (mounted) {
           setState(() {
@@ -39,7 +42,7 @@ class _LaunchMiniProgramPageState extends State<LaunchMiniProgramPage> {
         children: <Widget>[
           OutlineButton(
             onPressed: () {
-              launchWeChatMiniProgram(username: "gh_d43f693ca31f");
+              fluwx.launchWeChatMiniProgram(username: "gh_d43f693ca31f");
             },
             child: const Text("Launch MiniProgrom"),
           ),

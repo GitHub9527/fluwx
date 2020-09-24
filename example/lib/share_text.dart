@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fluwx/fluwx.dart';
+import 'package:fluwx/src/response/wechat_response.dart';
+import 'package:fluwx/src/share/share_models.dart';
+import 'package:fluwx/src/wechat_enums.dart';
+import 'package:fluwx/src/wechat_file.dart' hide FileSchema;
 
 class ShareTextPage extends StatefulWidget {
   @override
@@ -9,7 +13,7 @@ class ShareTextPage extends StatefulWidget {
 class _ShareTextPageState extends State<ShareTextPage> {
   String _text = "share text from fluwx";
   WeChatScene scene = WeChatScene.SESSION;
-
+  Fluwx fluwx = Fluwx();
   @override
   void initState() {
     super.initState();
@@ -79,7 +83,7 @@ class _ShareTextPageState extends State<ShareTextPage> {
   }
 
   void _shareText() {
-    shareToWeChat(WeChatShareTextModel(_text, scene: scene)).then((data) {
+    fluwx.shareToWeChat(WeChatShareTextModel(_text, scene: scene)).then((data) {
       print("-->$data");
     });
 

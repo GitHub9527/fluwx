@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fluwx/fluwx.dart';
-
+import 'package:fluwx/src/response/wechat_response.dart';
+import 'package:fluwx/src/share/share_models.dart';
+import 'package:fluwx/src/wechat_enums.dart';
+import 'package:fluwx/src/wechat_file.dart' hide FileSchema;
 class ShareWebPagePage extends StatefulWidget {
   @override
   ShareWebPagePageState createState() {
@@ -13,7 +16,7 @@ class ShareWebPagePageState extends State<ShareWebPagePage> {
   String _title = "Fluwx";
   String _thumnail = "images/logo.png";
   WeChatScene scene = WeChatScene.SESSION;
-
+Fluwx fluwx = Fluwx();
   @override
   void initState() {
     super.initState();
@@ -105,7 +108,7 @@ class ShareWebPagePageState extends State<ShareWebPagePage> {
       thumbnail: WeChatImage.network(_thumnail),
       scene: scene,
     );
-    shareToWeChat(model);
+    fluwx.shareToWeChat(model);
   }
 
   void handleRadioValueChanged(WeChatScene scene) {

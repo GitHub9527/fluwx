@@ -1,8 +1,11 @@
 import 'dart:convert';
 import 'dart:io' as H;
-
+import 'package:fluwx/src/response/wechat_response.dart';
+import 'package:fluwx/src/share/share_models.dart';
+import 'package:fluwx/src/wechat_enums.dart';
+import 'package:fluwx/src/wechat_file.dart' hide FileSchema;
 import 'package:flutter/material.dart';
-import 'package:fluwx/fluwx.dart' as fluwx;
+import 'package:fluwx/fluwx.dart' ;
 
 class PayPage extends StatefulWidget {
   @override
@@ -13,12 +16,12 @@ class _PayPageState extends State<PayPage> {
   String _url = "https://wxpay.wxutil.com/pub_v2/app/app_pay.php";
 
   String _result = "无";
-
+  Fluwx fluwx = Fluwx();
   @override
   void initState() {
     super.initState();
     fluwx.weChatResponseEventHandler.listen((res) {
-      if (res is fluwx.WeChatPaymentResponse) {
+      if (res is WeChatPaymentResponse) {
         setState(() {
           _result = "pay :${res.isSuccessful}";
         });

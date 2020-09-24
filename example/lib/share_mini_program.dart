@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fluwx/fluwx.dart';
+import 'package:fluwx/src/response/wechat_response.dart';
+import 'package:fluwx/src/share/share_models.dart';
+import 'package:fluwx/src/wechat_enums.dart';
+import 'package:fluwx/src/wechat_file.dart' hide FileSchema;
 
 class ShareMiniProgramPage extends StatefulWidget {
   @override
@@ -15,7 +19,7 @@ class _ShareMiniProgramPageState extends State<ShareMiniProgramPage> {
   String _userName = "gh_d43f693ca31f";
   String _path = "/pages/media";
   String _description = "Fluwx";
-
+Fluwx fluwx  = Fluwx();
   @override
   void initState() {
     super.initState();
@@ -97,6 +101,6 @@ class _ShareMiniProgramPageState extends State<ShareMiniProgramPage> {
         description: _description,
         thumbnail: WeChatImage.network(_thumbnail)
     );
-    shareToWeChat(model);
+    fluwx.shareToWeChat(model);
   }
 }

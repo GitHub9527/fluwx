@@ -1,10 +1,14 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:fluwx/fluwx.dart' as fluwx;
+import 'package:fluwx/fluwx.dart' ;
+import 'package:fluwx/src/response/wechat_response.dart';
+import 'package:fluwx/src/share/share_models.dart';
+import 'package:fluwx/src/wechat_enums.dart';
+import 'package:fluwx/src/wechat_file.dart' hide FileSchema;
 
 void main() {
   const MethodChannel channel = MethodChannel('com.jarvanmo/fluwx');
-
+    Fluwx  fluwx =   Fluwx();
   TestWidgetsFlutterBinding.ensureInitialized();
 
   setUp(() {
@@ -44,13 +48,13 @@ void main() {
   group("share", () {
     test("text", () async {
       expect(
-          await fluwx.shareToWeChat(fluwx.WeChatShareTextModel("text")), true);
+          await fluwx.shareToWeChat(WeChatShareTextModel("text")), true);
     });
 
     test("shareImage", () async {
       expect(
-          await fluwx.shareToWeChat(fluwx.WeChatShareImageModel(
-              fluwx.WeChatImage.network("http://flutter.dev"))),
+          await fluwx.shareToWeChat(WeChatShareImageModel(
+              WeChatImage.network("http://flutter.dev"))),
           true);
     });
   });

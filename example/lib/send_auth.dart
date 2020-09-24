@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:fluwx/fluwx.dart' as fluwx;
+import 'package:fluwx/fluwx.dart';
+import 'package:fluwx/src/response/wechat_response.dart';
+import 'package:fluwx/src/share/share_models.dart';
+import 'package:fluwx/src/wechat_enums.dart';
+import 'package:fluwx/src/wechat_file.dart' hide FileSchema;
 
 class SendAuthPage extends StatefulWidget {
   @override
@@ -8,12 +12,12 @@ class SendAuthPage extends StatefulWidget {
 
 class _SendAuthPageState extends State<SendAuthPage> {
   String _result = "无";
-
+  Fluwx fluwx = Fluwx();
   @override
   void initState() {
     super.initState();
     fluwx.weChatResponseEventHandler.distinct((a, b) => a == b).listen((res) {
-      if (res is fluwx.WeChatAuthResponse) {
+      if (res is WeChatAuthResponse) {
         setState(() {
           _result = "state :${res.state} \n code:${res.code}";
         });
